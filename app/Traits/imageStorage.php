@@ -40,6 +40,6 @@ trait ImageStorage
      */
     public function deleteImage($old_photo, $path)
     {
-        Storage::delete("/public/{$path}" . $old_photo);
+        Storage::delete("/public/{$path}/" . $old_photo);
     }
 }

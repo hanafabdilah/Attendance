@@ -9,8 +9,8 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item">User</li>
+                    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/user">User</a></li>
                     <li class="breadcrumb-item active">Edit</li>
                 </ol>
             </div><!-- /.col -->
@@ -72,7 +72,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Photo</label>
-                                <input type="file" name="image" class="form-control-file">
+                                <input type="file" name="image" class="form-control-file mb-3">
                                 @if ($user->photo)
                                     <img src="{{ asset('/storage/profile/' . $user->photo) }}" alt="" height="100">
                                 @endif

@@ -51,7 +51,7 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
+                                    <th>Nama</th>
                                     <th>E-Mail</th>
                                     <th></th>
                                 </tr>
