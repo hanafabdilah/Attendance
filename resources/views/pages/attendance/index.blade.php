@@ -10,7 +10,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
                     <li class="breadcrumb-item active">Attendance</li>
                 </ol>
             </div><!-- /.col -->
@@ -33,7 +33,6 @@
                 @endif
 
                 <!-- Attendance Chart -->
-                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary mb-2">Add</a>
 
                 <div class="card">
                     <div class="card-header">
@@ -51,7 +50,8 @@
                                     <th>ID</th>
                                     <th>User</th>
                                     <th>Status</th>
-                                    <th>Time</th>
+                                    <th>Check In Time</th>
+                                    <th>Check Out Time</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -80,11 +80,17 @@
             columns: [
                 {data: 'DT_RowIndex', name: 'id'},
                 {data: 'user.name', name: 'user.name'},
-                {data: 'status', name: 'status'},
+                {data: function(row) {
+                    return row.status ? "Check Out" : "Check In"
+                }, name: 'status'},
                 {data: function(row) {
                     let date = new Date(row.created_at);
                     return date.toLocaleString();
                 }, name: 'created_at'},
+                {data: function(row) {
+                    let date = new Date(row.updated_at);
+                    return date.toLocaleString();
+                }, name: 'updated_at'},
                 {data: 'action', name: 'action', orderable: false, searchable: false}
             ]
         });

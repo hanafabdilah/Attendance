@@ -9,8 +9,8 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item">Attendance</li>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/attendance">Attendance</a></li>
                     <li class="breadcrumb-item active">Show</li>
                 </ol>
             </div><!-- /.col -->
@@ -27,12 +27,42 @@
             <section class="col-lg-12">
                 <!-- Attendance Chart -->
                 <a href="{{ url()->previous() }}" class="btn btn-sm btn-primary mb-2">Back</a>
-
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
                             <i class="ion ion-clipboard mr-1"></i>
                             Attendance
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table" id="datatable">
+                            <tbody>
+                                <tr>
+                                    <th>Name</th>
+                                    <td>{{ $attendance->user->name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <td>{{ $attendance->status ? 'Check Out' : 'Check In'}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Check In</th>
+                                    <td>{{ $attendance->created_at->format('d/m/y H:i') }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Check Out</th>
+                                    <td>{{ $attendance->updated_at->format('d/m/y H:i') }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                @foreach($attendance->detail as $detail)
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="ion ion-clipboard mr-1"></i>
+                            Attendance {{ $detail->type }}
                         </h3>
                     </div>
                     <!-- /.card-header -->
@@ -41,19 +71,15 @@
                             <tbody>
                                 <tr>
                                     <th>Time</th>
-                                    <td>{{ $attendance->created_at }}</td>
+                                    <td>{{ $detail->created_at }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Name</th>
-                                    <td>{{ $attendance->user->name }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Lat, Long</th>
-                                    <td>{{ $attendance->lat }}, {{ $attendance->long }}</td>
+                                    <th>Long, Lat</th>
+                                    <td>{{ $detail->long }}, {{ $detail->lat }}</td>
                                 </tr>
                                 <tr>
                                     <th>Address</th>
-                                    <td>{{ $attendance->address }}</td>
+                                    <td>{{ $detail->address }}</td>
                                 </tr>
                                 <tr>
                                     <th>Location</th>
@@ -66,7 +92,7 @@
                                                 scrolling="no"
                                                 marginheight="0"
                                                 marginwidth="0"
-                                                src="https://maps.google.com/maps?q={{ $attendance->lat }},{{ $attendance->long }}&hl=en&z=14&amp;output=embed"
+                                                src="https://maps.google.com/maps?q={{ $detail->long }},{{ $detail->lat }}&hl=en&z=14&amp;output=embed"
                                             >
                                             </iframe>
                                         </div>
@@ -74,12 +100,13 @@
                                 </tr>
                                 <tr>
                                     <th>Photo</th>
-                                    <td><img width="350" src="{{ asset('/storage/photo/' . $attendance->photo) }}" alt=""></td>
+                                    <td><img width="350" src="{{ asset('/storage/attendance/' . $detail->photo) }}" alt=""></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
+                @endforeach
                 <!-- /.card -->
             </section>
             <!-- /.Left col -->
