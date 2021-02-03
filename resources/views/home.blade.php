@@ -35,7 +35,6 @@
                     {{ session('status') }}
                 </div>
                 @endif
-
                 <!-- Attendance Chart -->
                 <div class="card">
                     <div class="card-header">
@@ -46,7 +45,18 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <div id="chart" style="height: 300px"></div>
+                        @if(Auth::user()->is_admin)
+                            <div id="chart" style="height: 300px"></div>
+                        @else
+                            <p><b>Status Today</b></p>
+                            @if(!$user)
+                                <p>Not Absent Yet<p>
+                            @elseif($user->status == 0 )
+                                <p>Check In</p>
+                            @elseif($user->status == 1)
+                                <p>Check Out</p>
+                            @endif
+                        @endif
                     </div>
                 </div>
                 <!-- /.card -->

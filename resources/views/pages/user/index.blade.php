@@ -55,6 +55,7 @@
                                     <th>ID</th>
                                     <th>Nama</th>
                                     <th>E-Mail</th>
+                                    <th>Role</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -84,6 +85,9 @@
                 {data: 'id', name: 'id'},
                 {data: 'name', name: 'name'},
                 {data: 'email', name: 'email'},
+                {data: function(row){
+                    return row.is_admin ? 'Admin' : 'Siswa'
+                }, name: 'is_admin'},
                 {data: 'action', name: 'action', orderable: false, searchable: false}
             ]
         });

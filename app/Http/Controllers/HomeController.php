@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use App\Attendance;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data = array(
+            'user' => Attendance::where('user_id', Auth::user()->id)->whereDate('created_at', Carbon::today())->first(),
+        );
+        return view('home', $data);
     }
 }
