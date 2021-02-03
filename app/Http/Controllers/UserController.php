@@ -27,6 +27,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function myaccount()
+    {
+        echo 'tes';
+    }
+
     public function index(Request $request)
     {
         if ($request->ajax()) {

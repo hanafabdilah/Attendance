@@ -25,3 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('user', 'UserController');
 Route::resource('attendance', 'AttendanceController')->only('index', 'show');
+
+Route::get('myaccount', 'MyAccountController@index');
+Route::post('myaccount/update/{id}', 'MyAccountController@update');
