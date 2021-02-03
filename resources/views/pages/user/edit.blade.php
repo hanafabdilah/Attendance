@@ -51,15 +51,15 @@
                             @csrf @method('PUT')
                             <div class="form-group">
                                 <label for="">Name</label>
-                                <input type="text" name="name" class="form-control" value="{{ old('name', $user->name) }}">
+                                <input type="text" name="name" class="form-control" value="{{ old('name', $user->name) }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="">e-Mail</label>
-                                <input type="email" name="email" class="form-control" value="{{ old('email', $user->email) }}">
+                                <input type="email" name="email" class="form-control" value="{{ old('email', $user->email) }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="">Password</label>
-                                <input type="password" name="password" class="form-control">
+                                <input type="password" name="password" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="" style="display: block">Is Admin</label>
@@ -79,9 +79,10 @@
                                     <img src="{{ asset('/storage/profile/' . $user->photo) }}" alt="" height="100">
                                 @endif
                             </div>
+                            @if(!$user->is_admin)
                             <button type="submit" class="btn btn-warning btn-block">Update</button>
+                            @endif
                         </form>
-
                     </div>
                 </div>
                 <!-- /.card -->

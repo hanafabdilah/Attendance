@@ -51,15 +51,15 @@
                                     @csrf
                                         <tr>
                                             <th>Name</th>
-                                            <td colspan="2"><input type="text" name="name" class="form-control" value="{{ Auth::user()->name }}"></td>
+                                            <td colspan="2"><input type="text" name="name" class="form-control" value="{{ Auth::user()->name }}" disabled></td>
                                         </tr>
                                         <tr>
                                             <th>Email</th>
-                                            <td colspan="2"><input type="email" name="email" class="form-control" value="{{ Auth::user()->email }}"></td>
+                                            <td colspan="2"><input type="email" name="email" class="form-control" value="{{ Auth::user()->email }}" disabled></td>
                                         </tr>
                                         <tr>
                                             <th>Photo</th>
-                                            <td><input type="file" name="image" class="form-control-file" accept=".jpg, .jpeg, .png"></td>
+                                            <td><input type="file" name="image" class="form-control-file" accept=".jpg, .jpeg, .png" required></td>
                                             <td><img src="{{ asset('/storage/profile') }}/{{ Auth::user()->photo }}" style="width: 300px"></td>
                                         </tr>
                                         <tr>
@@ -82,19 +82,19 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table class="table table-borderless">
-                                    <form action="/myaccount/change_password/{{ Auth::user()->id }}" method="post">
+                                    <form action="/myaccount/password/update/{{ Auth::user()->id }}" method="post">
                                     @csrf
                                         <tr>
                                             <th>Old Password</th>
-                                            <td><input type="password" name="old_password" class="form-control"></td>
+                                            <td><input type="password" name="old_password" class="form-control" required></td>
                                         </tr>
                                         <tr>
                                             <th>New Password</th>
-                                            <td><input type="password" name="password" class="form-control"></td>
+                                            <td><input type="password" name="password" class="form-control" required></td>
                                         </tr>
                                         <tr>
                                             <th>Confirm Password</th>
-                                            <td><input type="password" name="confirm" class="form-control"></td>
+                                            <td><input type="password" name="confirm" class="form-control" required></td>
                                         </tr>
                                         </tr>
                                         <tr>

@@ -41,7 +41,7 @@
                             <tbody>
                                 <tr>
                                     <th>Name</th>
-                                    <td>{{ $attendance->user->name }}</td>
+                                    <td>{{ $attendance->user->name ?? 'Deleted'}}</td>
                                 </tr>
                                 <tr>
                                     <th>Status</th>

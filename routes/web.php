@@ -28,3 +28,4 @@ Route::resource('attendance', 'AttendanceController')->only('index', 'show');
 
 Route::get('myaccount', 'MyAccountController@index');
 Route::post('myaccount/update/{id}', 'MyAccountController@update');
+Route::post('myaccount/password/update/{id}', 'MyAccountController@updatePassword');

@@ -51,15 +51,15 @@
                             @csrf
                             <div class="form-group">
                                 <label for="">Name</label>
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="name" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="">e-Mail</label>
-                                <input type="email" name="email" class="form-control">
+                                <input type="email" name="email" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="">Password</label>
-                                <input type="password" name="password" class="form-control">
+                                <input type="password" name="password" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="" style="display: block">Is Admin</label>
@@ -68,7 +68,7 @@
                                     <label class="form-check-label" for="inlineRadio1">Yes</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" name="is_admin" type="radio" id="inlineRadio2" value="0">
+                                    <input class="form-check-input" name="is_admin" type="radio" id="inlineRadio2" value="0" checked>
                                     <label class="form-check-label" for="inlineRadio2">No</label>
                                 </div>
                             </div>

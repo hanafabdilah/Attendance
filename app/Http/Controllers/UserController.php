@@ -36,7 +36,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = User::query()->where('is_admin', 0);
+            $data = User::query();
 
             return DataTables::eloquent($data)
                 ->addColumn('action', function ($data) {
@@ -111,7 +111,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::where('is_admin', 0)->findOrFail($id);
+        $user = User::findOrFail($id);
         return view('pages.user.edit', compact('user'));
     }
 
@@ -124,7 +124,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::where('is_admin', 0)->findOrFail($id);
+        $user = User::findOrFail($id);
         $photo = $request->file('image');
         $cekemail = User::where('email', $request->email)->whereNotIn('email', [$user->email])->count();
 
@@ -153,14 +153,17 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::where('is_admin', 0)->findOrFail($id);
+        $user = User::findOrFail($id);
+        if ($user->is_admin == 0) {
+            if ($user->photo) {
+                $this->deleteImage($user->photo, 'profile');
+            }
 
-        if ($user->photo) {
-            $this->deleteImage($user->photo, 'profile');
+            $user->delete();
+            $user->attendances->delete();
+
+            return back()->with('status', 'Success');
         }
-
-        $user->delete();
-
-        return redirect()->route('user.index');
+        return back()->with('status', 'Cannot delete admin');
     }
 }
