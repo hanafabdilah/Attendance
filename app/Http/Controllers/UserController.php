@@ -74,8 +74,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $cekmail = User::where('email', $request->email)->first();
-        if (!$cekmail) {
+        $cekmail = User::where('email', $request->email)->count();
+        if ($cekmail < 1) {
             $photo = $request->file('image');
 
             if ($photo) {
@@ -86,9 +86,9 @@ class UserController extends Controller
 
             User::create($request->all());
 
-            return redirect()->route('user.index')->with('message', 'success');
+            return back()->with('status', 'Success');
         }
-        return back()->with('message', 'Email is already in use');
+        return back()->with('status', 'Email is already in use');
     }
 
     /**
@@ -126,20 +126,23 @@ class UserController extends Controller
     {
         $user = User::where('is_admin', 0)->findOrFail($id);
         $photo = $request->file('image');
+        $cekemail = User::where('email', $request->email)->whereNotIn('email', [$user->email])->count();
 
-        if ($photo) {
-            $request['photo'] = $this->uploadImage($photo, $request->name, 'profile', true, $user->photo);
+        if ($cekemail < 1) {
+            if ($photo) {
+                $request['photo'] = $this->uploadImage($photo, $request->name, 'profile', true, $user->photo);
+            }
+
+            if ($request->password) {
+                $request['password'] = Hash::make($request->password);
+            } else {
+                $request['password'] = $user->password;
+            }
+
+            $user->update($request->all());
+            return back()->with('status', 'Success');
         }
-
-        if ($request->password) {
-            $request['password'] = Hash::make($request->password);
-        } else {
-            $request['password'] = $user->password;
-        }
-
-        $user->update($request->all());
-
-        return redirect()->route('user.index');
+        return back()->with('status', 'Email is already use');
     }
 
     /**

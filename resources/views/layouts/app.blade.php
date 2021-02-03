@@ -44,11 +44,6 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-      @if (session('message'))
-      <div class="alert alert-success" role="alert">
-          {{ session('message') }}
-      </div>
-      @endif
         @yield('content')
     </div>
     <!-- /.content-wrapper -->

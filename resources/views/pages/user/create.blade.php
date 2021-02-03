@@ -35,7 +35,7 @@
                 @endif
 
                 <!-- Attendance Chart -->
-                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary mb-2">Add</a>
+                <a href="{{ url()->previous() }}" class="btn btn-sm btn-primary mb-2">Back</a>
 
                 <div class="card">
                     <div class="card-header">
@@ -76,7 +76,7 @@
                                 <label for="">Photo</label>
                                 <input type="file" name="image" class="form-control-file">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary btn-block">Add</button>
                         </form>
 
                     </div>

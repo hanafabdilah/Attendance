@@ -79,7 +79,7 @@
                                     <img src="{{ asset('/storage/profile/' . $user->photo) }}" alt="" height="100">
                                 @endif
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-warning btn-block">Update</button>
                         </form>
 
                     </div>
