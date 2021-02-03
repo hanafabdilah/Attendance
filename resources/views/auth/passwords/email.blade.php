@@ -1,9 +1,11 @@
 @extends('auth.layouts.app')
 
+@section('title', 'Absensi Siswa | Email')
+
 @section('content')
     <div class="login-box">
         <div class="login-logo">
-            <a href="#"><b>Attendance</b>Live</a>
+            <p><b>Absensi Siswa</p>
         </div>
         <!-- /.login-logo -->
         <div class="card">

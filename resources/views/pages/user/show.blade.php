@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Absensi Siswa | Show User')
+
 @section('content')
 <div class="content-header">
     <div class="container-fluid">

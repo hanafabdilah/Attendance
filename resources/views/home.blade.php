@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Absensi Siswa | Home')
+
 @section('content')
 
 <!-- Content Header (Page header) -->

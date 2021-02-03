@@ -22,6 +22,7 @@
                     </p>
                 </a>
             </li>
+            @if(Auth::user()->is_admin)
             <li class="nav-item">
                 <a href="{{ url('/attendance') }}" class="nav-link {{ request()->is('attendance') ? 'active' : '' }}{{ request()->is('attendance/*') ? 'active' : '' }}">
                     <i class="nav-icon far fa-calendar-alt"></i>
@@ -38,7 +39,8 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-header">LABELS</li>
+            @endif
+            <li class="nav-header">ACTION</li>
             <li class="nav-item">
                 <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">

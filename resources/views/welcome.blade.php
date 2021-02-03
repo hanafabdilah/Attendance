@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Codepolitan Attendance</title>
+  <title>Absensi Siswa | Welcome Page</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,21 +20,12 @@
 <!-- Automatic element centering -->
 <div class="lockscreen-wrapper">
   <div class="lockscreen-logo">
-    <a href="#"><b>Attendance</b>Live</a>
-  </div>
-
-  <!-- START LOCK SCREEN ITEM -->
-  <div class="lockscreen-item text-center">
-        <h2>Welcome Page</h2>
-  </div>
-  <!-- /.lockscreen-item -->
-  <div class="help-block text-center">
-    Enter your email and password to retrieve your session
+    <p><b>Absensi Siswa</b></p>
   </div>
   <div class="text-center">
-    <a href="{{ url('login') }}">login</a>
+    <a href="{{ url('login') }}" class="btn btn-rounded btn-primary">LOGIN</a>
   </div>
-  <div class="lockscreen-footer text-center">
+  <div class="lockscreen-footer text-center mt-4">
     Copyright &copy; 2014-2019 <b><a href="http://adminlte.io" class="text-black">AdminLTE.io</a></b><br>
     All rights reserved
   </div>
