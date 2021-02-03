@@ -3,10 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Attendance extends Model
 {
     protected $guarded = [];
+
+    public function scopeCountAttendance($query, $status)
+    {
+        return $query->whereDate('created_at', Carbon::today())->where('status', $status)->count();
+    }
 
     public function detail()
     {

@@ -11,7 +11,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </div><!-- /.col -->
@@ -44,7 +44,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <!-- <div id="chart" style="height: 300px"></div> -->
+                        <div id="chart" style="height: 300px"></div>
                     </div>
                 </div>
                 <!-- /.card -->
@@ -58,15 +58,15 @@
 @endsection
 
 @push('scripts')
-<!-- <script>
-    const chart = new Chartisan({
-        el: '#chart',
-        url: "@chart('attendance_chart')",
-        hooks: new ChartisanHooks()
-            .colors(['#3490dc', '#e3342f', '#38c172'])
-            .legend({ position: 'bottom' })
-            .datasets(['bar', 'bar', { type: 'line', fill: false }])
-            .tooltip()
-    });
-</script> -->
+    <script>
+        const chart = new Chartisan({
+            el: '#chart',
+            url: "@chart('attendance_chart')",
+            hooks: new ChartisanHooks()
+                .colors(['#3490dc', '#e3342f', '#38c172'])
+                .legend({ position: 'bottom' })
+                .datasets(['bar', 'bar', { type: 'line', fill: false }])
+                .tooltip()
+        });
+    </script>
 @endpush
